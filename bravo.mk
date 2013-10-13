@@ -166,7 +166,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.hwc.fakevsync=1 \
     debug.gr.numframebuffers=2 \
     debug.egl.hw=1 \
-    debug.composition.type=mdp \
+    debug.composition.type=gpu \
     debug.mdpcomp.maxlayer=0
     persist.sys.purgeable_assets=1
 
