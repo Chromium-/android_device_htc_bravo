@@ -243,10 +243,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
-#Extras
+#Extra ChromiumROM Stuff
 PRODUCT_COPY_FILES += \
     vendor/cm/chromium/LowSoundFixer.apk:system/app/LowSoundFixer.apk \
     vendor/cm/chromium/FileExplorer.apk:system/app/FileExplorer.apk \
+    vendor/cm/chromium/Dark.apk:system/app/Dark.apk \
     vendor/cm/chromium/WallpaperSmall.apk:system/app/WallpaperSmall.apk
 
 # Proprietary blobs
