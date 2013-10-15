@@ -170,8 +170,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.mdpcomp.maxlayer=0
     persist.sys.purgeable_assets=1
 
+#ChromiumROM Build.prop additions
 PRODUCT_PROPERTY_OVERRIDES += \
-    qemu.hw.mainkeys=0
+    qemu.hw.mainkeys=0 \
+    persist.sys.themeId=Dark \
+    persist.sys.themePackageName=com.Chromium_.Dark
+
 #
 # Dalvik Properties
 #
