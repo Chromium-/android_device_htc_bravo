@@ -25,11 +25,7 @@ DEVICE_PACKAGE_OVERLAYS := device/htc/bravo/overlay
 
 # Propreties
 PRODUCT_PROPERTY_OVERRIDES += \
-<<<<<<< HEAD
     ro.sf.lcd_density=210 \
-=======
-    ro.sf.lcd_density=240 \
->>>>>>> evervolv/kitkat
     rild.libpath=/system/lib/libhtc_ril.so \
     ro.ril.ecc.HTC-ELL=92,93,94 \
     ro.ril.ecc.HTC-WWE=999 \
@@ -53,16 +49,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.enable.managed.roaming=1 \
     ro.ril.oem.nosim.ecclist=911,112,999,000,08,118,120,122,110,119,995 \
     ro.ril.emc.mode=2 \
-<<<<<<< HEAD
-    ro.telephony.ril.v3=signalstrengthgsm,singlepdp,apptypesim \
-    ro.vold.umsdirtyratio=20 \
     debug.qctwa.statusbar=1 \
     debug.qc.hardware=true \
     debug.qctwa.preservebuf=1
-=======
     ro.telephony.ril.v3=signalstrengthgsm,apptypesim \
     ro.vold.umsdirtyratio=20
->>>>>>> evervolv/kitkat
 
 # Set usb type
 ADDITIONAL_DEFAULT_PROPERTIES += \
@@ -83,10 +74,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/htc/bravo/init.bravo.rc:root/init.bravo.rc \
     device/htc/bravo/init.bravo.usb.rc:root/init.bravo.usb.rc \
-<<<<<<< HEAD
-=======
     device/htc/bravo/fstab.bravo:root/fstab.bravo \
->>>>>>> evervolv/kitkat
     device/htc/bravo/ueventd.bravo.rc:root/ueventd.bravo.rc
 
 # Prebuilt files/configs
@@ -99,15 +87,10 @@ PRODUCT_COPY_FILES += \
     device/htc/bravo/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
     device/htc/bravo/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl \
     device/htc/bravo/synaptics-rmi-touchscreen.kcm:system/usr/keychars/synaptics-rmi-touchscreen.kcm \
-<<<<<<< HEAD
     device/htc/bravo/vold.fstab:system/etc/vold.fstab \
     device/htc/bravo/sysctl.conf:system/etc/sysctl.conf \
     device/htc/bravo/hostapd:system/bin/hostapd \
     device/htc/bravo/hostapd_cli:system/bin/hostapd_cli
-
-=======
-    device/htc/bravo/sysctl.conf:system/etc/sysctl.conf
->>>>>>> evervolv/kitkat
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -117,7 +100,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/bravo/media_profiles.xml:system/etc/media_profiles.xml
 
-<<<<<<< HEAD
 # Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/bravo/bravo-vendor.mk)
 
@@ -190,9 +172,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 #ChromiumROM Build.prop additions
 PRODUCT_PROPERTY_OVERRIDES += \
-    qemu.hw.mainkeys=0 \
-    persist.sys.themeId=Dark \
-    persist.sys.themePackageName=com.Chromium_.Dark
+    qemu.hw.mainkeys=0
 
 #
 # Dalvik Properties
@@ -269,7 +249,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/chromium/LowSoundFixer.apk:system/app/LowSoundFixer.apk \
     vendor/cm/chromium/FileExplorer.apk:system/app/FileExplorer.apk \
-    vendor/cm/chromium/Dark.apk:system/app/Dark.apk \
     vendor/cm/chromium/WallpaperSmall.apk:system/app/WallpaperSmall.apk
 
 # Proprietary blobs
@@ -280,4 +259,3 @@ $(call inherit-product, device/htc/qsd8k-common/qsd8k.mk)
 
 # Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/bravo/bravo-vendor.mk)
->>>>>>> evervolv/kitkat
