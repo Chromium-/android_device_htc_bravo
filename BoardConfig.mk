@@ -27,6 +27,11 @@ USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
 -include vendor/htc/bravo/BoardConfigVendor.mk
+<<<<<<< HEAD
+=======
+# inherit common defines for all qsd8k devices
+include device/htc/qsd8k-common/BoardConfigCommon.mk
+>>>>>>> evervolv/kitkat
 
 TARGET_BOOTLOADER_BOARD_NAME := bravo
 
@@ -35,7 +40,10 @@ BOARD_KERNEL_BASE := 0x20000000
 BOARD_KERNEL_NEW_PPPOX := true
 
 TARGET_KERNEL_CONFIG    := evervolv_bravo_defconfig
+<<<<<<< HEAD
 TARGET_PREBUILT_KERNEL  := device/htc/bravo/prebuilt/kernel
+=======
+>>>>>>> evervolv/kitkat
 
 # to enable the GPS HAL
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := bravo
@@ -53,6 +61,13 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 BOARD_USE_LEGACY_TRACKPAD := true
 
+<<<<<<< HEAD
+=======
+
+# Recovery
+TARGET_RECOVERY_FSTAB   := device/htc/bravo/fstab.bravo
+
+>>>>>>> evervolv/kitkat
 # # cat /proc/mtd
 # dev:    size   erasesize  name
 # mtd0: 000a0000 00020000 "misc"
@@ -66,6 +81,7 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00500000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE :=  262144000 # 0x09100000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 154140672 # 0x093a0000
 BOARD_FLASH_BLOCK_SIZE := 131072
+<<<<<<< HEAD
 
 TARGET_NO_BOOTLOADER := true
 
@@ -166,3 +182,5 @@ TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
 #TWRP
 DEVICE_RESOLUTION := 540x960
+=======
+>>>>>>> evervolv/kitkat

@@ -30,7 +30,11 @@
          alpha compositing functionality in hardware.  If set, the window
          manager will disable alpha trasformation in animations where not
          strictly needed. -->
+<<<<<<< HEAD
     <bool name="config_sf_limitedAlpha">false</bool>
+=======
+    <bool name="config_sf_limitedAlpha">true</bool>
+>>>>>>> evervolv/kitkat
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
          The N entries of this array define N + 1 zones as follows:
@@ -168,7 +172,11 @@
          bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
          should be empty. -->
     <string-array translatable="false" name="config_tether_bluetooth_regexs">
+<<<<<<< HEAD
         <item>"bt-pan"</item>
+=======
+        <item>"bnep\\d"</item>
+>>>>>>> evervolv/kitkat
     </string-array>
 
     <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
@@ -199,6 +207,7 @@
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
     <!-- Boolean indicating whether the wifi chipset has p2p support -->
+<<<<<<< HEAD
     <bool translatable="false" name="config_wifi_p2p_support">true</bool>
 
     <bool name="config_ui_enableFadingMarquee">false</bool>
@@ -212,6 +221,12 @@
     -->
     <integer name="config_longPressOnHomeBehavior">2</integer>
 
+=======
+    <!--<bool translatable="false" name="config_wifi_p2p_support">true</bool>-->
+
+    <bool name="config_ui_enableFadingMarquee">false</bool>
+
+>>>>>>> evervolv/kitkat
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
 

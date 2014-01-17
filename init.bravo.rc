@@ -1,5 +1,6 @@
 import init.bravo.usb.rc
 
+<<<<<<< HEAD
 on early-init
     export EXTERNAL_STORAGE /storage/sdcard0
     mkdir /storage 0050 system sdcard_r
@@ -7,6 +8,27 @@ on early-init
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
 
+=======
+on init
+    mkdir /storage 0050 system sdcard_r
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+    mkdir /storage/sdcard0 0700 root root
+
+# for backwards compatibility
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+
+    export EXTERNAL_STORAGE /storage/sdcard0
+
+on fs
+# mount mtd partitions
+    # Mount /system rw first to give the filesystem a chance to save a checkpoint
+    mount yaffs2 mtd@system /system
+    mount yaffs2 mtd@system /system ro remount
+    mount yaffs2 mtd@userdata /data nosuid nodev
+    mount yaffs2 mtd@cache /cache nosuid nodev
+
+>>>>>>> evervolv/kitkat
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
@@ -62,6 +84,14 @@ on boot
     setprop ro.ril.fd.scron.timeout 4
     setprop ro.ril.fd.scroff.timeout 3
 
+<<<<<<< HEAD
+=======
+   #sdcard daemon
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
+    disabled
+
+>>>>>>> evervolv/kitkat
     # compass/accelerometer daemon
 service akmd /system/bin/akmd
     class main
@@ -69,7 +99,13 @@ service akmd /system/bin/akmd
     group compass misc input
 
 service wpa_supplicant /system/bin/wpa_supplicant \
+<<<<<<< HEAD
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
+=======
+    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+    -O/data/misc/wifi/sockets -e/data/misc/wifi/entropy.bin \
+    -g@android:wpa_wlan0
+>>>>>>> evervolv/kitkat
 
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
@@ -77,7 +113,11 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     oneshot
 
     # wifi
+<<<<<<< HEAD
 service dhcpcd_wlan0 /system/bin/dhcpcd -aABKL
+=======
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
+>>>>>>> evervolv/kitkat
     class main
     disabled
     oneshot
