@@ -227,5 +227,7 @@
          policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
     -->
     <integer name="config_longPressOnHomeBehavior">2</integer>
-
+	
+    <!-- Lets try this out. Hopefully doesn't destroy performance -->
+    <bool name="config_enableTranslucentDecor">true</bool>
 </resources>
