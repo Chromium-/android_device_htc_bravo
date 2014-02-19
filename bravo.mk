@@ -25,7 +25,7 @@ DEVICE_PACKAGE_OVERLAYS := device/htc/bravo/overlay
 
 # Propreties
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=210 \
+    ro.sf.lcd_density=240 \
     rild.libpath=/system/lib/libhtc_ril.so \
     ro.ril.ecc.HTC-ELL=92,93,94 \
     ro.ril.ecc.HTC-WWE=999 \
@@ -40,7 +40,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.hsxpa=2 \
     ro.ril.def.agps.mode=2 \
     ro.ril.disable.power.collapse=0 \
-    windowsmgr.max_events_per_sec=120 \
+    windowsmgr.max_events_per_sec=150 \
     mobiledata.interfaces=rmnet0,rmnet1,rmnet2 \
     ro.media.dec.jpeg.memcap=20000000 \
     ro.opengles.version=131072 \
@@ -49,9 +49,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.enable.managed.roaming=1 \
     ro.ril.oem.nosim.ecclist=911,112,999,000,08,118,120,122,110,119,995 \
     ro.ril.emc.mode=2 \
-    debug.qctwa.statusbar=1 \
-    debug.qc.hardware=true \
-    debug.qctwa.preservebuf=1
     ro.telephony.ril.v3=signalstrengthgsm,apptypesim \
     ro.vold.umsdirtyratio=20
 
@@ -87,10 +84,7 @@ PRODUCT_COPY_FILES += \
     device/htc/bravo/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
     device/htc/bravo/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl \
     device/htc/bravo/synaptics-rmi-touchscreen.kcm:system/usr/keychars/synaptics-rmi-touchscreen.kcm \
-    device/htc/bravo/vold.fstab:system/etc/vold.fstab \
-    device/htc/bravo/sysctl.conf:system/etc/sysctl.conf \
-    device/htc/bravo/hostapd:system/bin/hostapd \
-    device/htc/bravo/hostapd_cli:system/bin/hostapd_cli
+    device/htc/bravo/sysctl.conf:system/etc/sysctl.conf
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -100,162 +94,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/bravo/media_profiles.xml:system/etc/media_profiles.xml
 
-# Also get non-open-source GSM-specific aspects if available
-$(call inherit-product-if-exists, vendor/htc/bravo/bravo-vendor.mk)
-
-# English locale
-PRODUCT_LOCALES := en
-
-# High Density art
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
-
-# Configs
-PRODUCT_COPY_FILES += \
-    device/htc/bravo/media_codecs.xml:system/etc/media_codecs.xml \
-    device/htc/bravo/audio_policy.conf:system/etc/audio_policy.conf
-
-# Misc
-PRODUCT_COPY_FILES += \
-    device/htc/bravo/init.power.rc:root/init.power.rc
-
-#
-# Required Packages
-#
-
-# Audio
-PRODUCT_PACKAGES += \
-    audio.usb.default \
-    audio.a2dp.default \
-    audio.primary.qsd8k \
-    audio_policy.qsd8k
-
-# Camera
-PRODUCT_PACKAGES += \
-    camera.qsd8k
-
-# Display
-PRODUCT_PACKAGES += \
-    copybit.qsd8k \
-    gralloc.qsd8k \
-    hwcomposer.qsd8k
-
-# Omx
-PRODUCT_PACKAGES += \
-    libOmxCore \
-    libOmxVdec \
-    libstagefrighthw \
-    libOmxVidEnc
-
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    make_ext4fs \
-    setup_fs
-
-# Misc
-PRODUCT_PACKAGES += \
-    power.qsd8k \
-    com.android.future.usb.accessory
-
-#
-# Hardware Rendering Properties
-#
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.hw=1 \
-    debug.hwc.fakevsync=1 \
-    debug.gr.numframebuffers=2 \
-    debug.egl.hw=1 \
-    debug.composition.type=gpu \
-    debug.mdpcomp.maxlayer=0
-    persist.sys.purgeable_assets=1
-
-#ChromiumROM Build.prop additions
-PRODUCT_PROPERTY_OVERRIDES += \
-    qemu.hw.mainkeys=0
-
-#
-# Dalvik Properties
-#
-
-# dexop-flags: "v=" n|r|a, "o=" n|v|a|f, "m=y" register map
-# v=verify o=optimize: n=none r=remote a=all f=full v=verified
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.lockprof.threshold=500 \
-    dalvik.vm.dexopt-flags=m=y \
-    ro.sys.fw.bg_apps_limit=9 \
-    dalvik.vm.checkjni=false
-# Don't put /dalvik-cache to /cache patition. (for CM)
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dexopt-data-only=1
-
-# Default heap settings for 512mb device
-include frameworks/native/build/phone-hdpi-512-dalvik-heap.mk
-
-# We have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
-
-#
-# Camera (video recording)
-#
-
-# Properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.camcorder.disablemeta=1 \
-    rw.media.record.hasb=0
-
-#
-# Wifi
-#
-
-# Firmware
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
-
-# Properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=45
-
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
-
-#
-# Qcom
-#
-
-# Init post-boot script
-PRODUCT_COPY_FILES += \
-    device/htc/bravo/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
-
-#
-# Permissions
-#
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distict.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
-
-#Extra ChromiumROM Stuff
-PRODUCT_COPY_FILES += \
-    vendor/cm/chromium/LowSoundFixer.apk:system/app/LowSoundFixer.apk \
-    vendor/cm/chromium/FileExplorer.apk:system/app/FileExplorer.apk \
-    vendor/cm/chromium/WallpaperSmall.apk:system/app/WallpaperSmall.apk
-
-# Proprietary blobs
-$(call inherit-product-if-exists, vendor/htc/qsd8k-common/qsd8k-vendor.mk)
-=======
 # Common qsd8k stuff
 $(call inherit-product, device/htc/qsd8k-common/qsd8k.mk)
 
 # Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/bravo/bravo-vendor.mk)
+
+# Don't put /dalvik-cache to /cache patition. (for CM)
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dexopt-data-only=1
+
+# Torch
+PRODUCT_PACKAGES += \
+    Torch
