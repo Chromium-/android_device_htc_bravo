@@ -50,6 +50,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.oem.nosim.ecclist=911,112,999,000,08,118,120,122,110,119,995 \
     ro.ril.emc.mode=2 \
     ro.telephony.ril.v3=signalstrengthgsm,apptypesim \
+    persist.sys.force_highendgfx=true\
     ro.vold.umsdirtyratio=20
 
 # Set usb type
