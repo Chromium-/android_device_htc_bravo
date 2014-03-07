@@ -13,3 +13,4 @@ recovery                                       /recovery              mtd       
 system                                         /system                yaffs2          defaults                        defaults
 
 /devices/platform/msm_sdcc.2/mmc_host/mmc1     auto                   vfat            defaults                        voldmanaged=sdcard0:auto,noemulatedsd
+/dev/block/zram0                               none                   swap            defaults                        zramsize=214958080
