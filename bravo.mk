@@ -51,6 +51,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.emc.mode=2 \
     ro.telephony.ril.v3=signalstrengthgsm,apptypesim \
     persist.sys.force_highendgfx=true\
+    dalvik.vm.jit.codecachesize=0\
     ro.vold.umsdirtyratio=20
 
 # Set usb type
