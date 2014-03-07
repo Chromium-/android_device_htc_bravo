@@ -66,6 +66,11 @@ on boot
     write /sys/block/mtdblock4/bdi/read_ahead_kb 4
     write /sys/block/mtdblock5/bdi/read_ahead_kb 4
 
+    #KSM params
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
+    
     # Wakelock debug
     write /sys/module/wakelock/parameters/debug_mask 7
 
